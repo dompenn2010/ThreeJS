@@ -34,23 +34,14 @@
 		controls = new THREE.OrbitControls(camera, renderer.domElement);	
 
                 // Create the shape
-		var geometry = new THREE.BoxGeometry(2, 2, 2);
-		var cubeMaterials = 
-		[	
-			new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/1.png'), side: THREE.DoubleSide}), // RIGHT SIDE
-			new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/2.png'), side: THREE.DoubleSide}), // LEFT SIDE 
-			new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/3.png'), side: THREE.DoubleSide}), // TOP SIDE
-			new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/4.png'), side: THREE.DoubleSide}), // BOTTOM SIDE
-			new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/5.png'), side: THREE.DoubleSide}), // FRONT SIDE
-			new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/6.png'), side: THREE.DoubleSide})  // BACK SIDE
-		]		
+		var geometry = new THREE.TorusKnotBufferGeometry(10, 3, 100, 16);
 
 		// Create a material, color, or image texture
-		var material = new THREE.MeshFaceMaterial(cubeMaterials); 
-		var cube = new THREE.Mesh(geometry, material);
-		scene.add(cube);
+		var material = new THREE.MeshBasicMaterial({ color: 0x02859F, wireframe: true}); 
+		var torusKnot = new THREE.Mesh(geometry, material);
+		scene.add(torusKnot);
 
-		camera.position.z = 3;
+		camera.position.z = 30;
 
 
             var update = function()
